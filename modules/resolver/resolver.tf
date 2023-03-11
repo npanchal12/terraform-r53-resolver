@@ -15,7 +15,7 @@ resource "aws_route53_resolver_rule" "this" {
 resource "aws_route53_resolver_endpoint" "this" {
   direction          = "OUTBOUND"
   name               = "resolver-corp-dns"
-  security_group_ids = aws_security_group.this.id
+  security_group_ids = [aws_security_group.this.id]
   tags               = var.tags
 
   dynamic "ip_address" {
