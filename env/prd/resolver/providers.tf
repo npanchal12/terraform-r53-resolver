@@ -1,7 +1,7 @@
 provider "aws" {
   region = "ap-southeast-1"
   allowed_account_ids = [
-    "418156166869", # infra-corpnw-prd (child account of masternewcapital)
+    "614349650737", # Jiya-Account (child account of masternewcapital)
   ]
 
   default_tags {
