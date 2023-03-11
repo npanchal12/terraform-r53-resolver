@@ -10,7 +10,7 @@ resource "aws_route53_resolver_rule" "this" {
   }
 
   target_ip {
-    ip = "123.45.67.871"
+    ip = "123.45.67.81"
   }
 }
 
