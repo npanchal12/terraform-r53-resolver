@@ -5,9 +5,9 @@ resource "aws_route53_resolver_rule" "this" {
   domain_name          = "sphnet.com.sg"
   resolver_endpoint_id = aws_route53_resolver_endpoint.this.id
   rule_type            = "FORWARD"
-  count                = length(var.target_ips)
   target_ip {
-    ip = var.target_ips[count.index]
+    count = length(var.target_ips)
+    ip    = var.target_ips[count.index]
   }
 }
 
@@ -28,7 +28,7 @@ resource "aws_route53_resolver_endpoint" "this" {
 }
 
 resource "aws_route53_resolver_rule_association" "this" {
-  resolver_rule_id = aws_route53_resolver_rule.this[0].id
+  resolver_rule_id = aws_route53_resolver_rule.this.id
   vpc_id           = var.vpc_id
 }
 
@@ -65,8 +65,11 @@ resource "aws_ram_resource_share" "this" {
 }
 
 resource "aws_ram_resource_association" "this" {
-  resource_arn       = aws_route53_resolver_rule.this[0].arn
+  resource_arn       = aws_route53_resolver_rule.this.arn
   resource_share_arn = aws_ram_resource_share.this.arn
+  depends_on = [
+    aws_route53_resolver_rule.this
+  ]
 }
 
 resource "aws_ram_principal_association" "this" {
