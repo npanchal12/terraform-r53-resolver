@@ -1,0 +1,1 @@
+# terraform-r53-resolver
