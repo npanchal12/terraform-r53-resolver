@@ -2,6 +2,7 @@
 # Route53 resolver
 #############
 resource "aws_route53_resolver_rule" "this" {
+  name                 = sphnet_com_sg
   domain_name          = "sphnet.com.sg"
   resolver_endpoint_id = aws_route53_resolver_endpoint.this.id
   rule_type            = "FORWARD"
@@ -76,6 +77,6 @@ resource "aws_ram_resource_association" "this" {
 }
 
 resource "aws_ram_principal_association" "this" {
-  principal          = data.aws_organizations_organization.org.arn
+  principal          = "o-u7woe7g6n8"
   resource_share_arn = aws_ram_resource_share.this.arn
 }
