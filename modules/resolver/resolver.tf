@@ -77,15 +77,6 @@ resource "aws_ram_resource_association" "this" {
 }
 
 resource "aws_ram_principal_association" "this" {
-  principal          = aws_organizations_organization.org.arn
+  principal          = "583134984834"
   resource_share_arn = aws_ram_resource_share.this.arn
-}
-
-resource "aws_organizations_organization" "org" {
-  aws_service_access_principals = [
-    "cloudtrail.amazonaws.com",
-    "config.amazonaws.com",
-  ]
-
-  feature_set = "ALL"
 }
