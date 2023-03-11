@@ -70,6 +70,6 @@ resource "aws_ram_resource_association" "this" {
 }
 
 resource "aws_ram_principal_association" "this" {
-  principal          = data.aws_organizations_organization.org.arn
+  principal          = data.aws_organizations_organization.org
   resource_share_arn = aws_ram_resource_share.this.arn
 }
