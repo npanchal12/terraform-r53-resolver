@@ -6,8 +6,11 @@ resource "aws_route53_resolver_rule" "this" {
   resolver_endpoint_id = aws_route53_resolver_endpoint.this.id
   rule_type            = "FORWARD"
   target_ip {
-    count = length(var.target_ips)
-    ip    = var.target_ips[count.index]
+    ip = "123.45.67.89"
+  }
+
+  target_ip {
+    ip = "123.45.67.871"
   }
 }
 
