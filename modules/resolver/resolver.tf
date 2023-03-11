@@ -2,7 +2,7 @@
 # Route53 resolver
 #############
 resource "aws_route53_resolver_rule" "this" {
-  name                 = sphnet_com_sg
+  name                 = "sphnet_com_sg"
   domain_name          = "sphnet.com.sg"
   resolver_endpoint_id = aws_route53_resolver_endpoint.this.id
   rule_type            = "FORWARD"
