@@ -29,13 +29,13 @@ resource "aws_route53_resolver_endpoint" "this" {
 
 resource "aws_route53_resolver_rule_association" "this" {
   resolver_rule_id = aws_route53_resolver_rule.this[0].id
-  vpc_id           = data.aws_ssm_parameter.vpc_id.value
+  vpc_id           = var.vpc_id
 }
 
 # Create a security group
 resource "aws_security_group" "this" {
   name_prefix = "example"
-  vpc_id      = data.aws_ssm_parameter.vpc_id.value
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port   = 0
