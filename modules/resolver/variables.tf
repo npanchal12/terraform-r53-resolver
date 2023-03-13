@@ -14,17 +14,9 @@ variable "ip_address" {
   description = "nested block: NestingSet, min items: 2, max items: 10 - The subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints)."
   type = set(object(
     {
-      ip        = optional(string)
-      ip_id     = optional(string)
       subnet_id = string
     }
   ))
-}
-
-variable "target_ips" {
-  description = "AWS based DNS Servers IP"
-  type        = list(string)
-  default     = ["10.67.23.5", "10.67.23.70"]
 }
 
 #########################
