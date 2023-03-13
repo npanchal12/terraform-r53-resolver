@@ -15,7 +15,6 @@ variable "ip_address" {
   type = set(object(
     {
       ip        = optional(string)
-      ip_id     = optional(string)
       subnet_id = string
     }
   ))
